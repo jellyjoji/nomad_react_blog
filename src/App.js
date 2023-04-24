@@ -1,24 +1,54 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  // let post = 'aaaa';
+  let [title, setTitle] = useState(['Click the Thumbs up ','Click the Heart ','Click the Smile ','Click the Crying ']);
+  let [liked, setLiked] = useState(0);
+  let [heart, setHeart] = useState(0);
+  let [smile, setSmile] = useState(0);
+  let [crying, setCrying] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="black-nav">
+        <h4>React Blog</h4>
+      </div>
+      {/* lists */}
+      <div className="list">
+        <h4>{title[0]}<span onClick={()=>{setLiked(liked+1)}}>👍🏻</span> {liked}</h4>
+        <p>2/17</p>
+      </div>
+      <div className="list">
+        <h4>{title[1]}<span onClick={()=>{setHeart(heart+1)}}>♥️</span> {heart}</h4>
+        <p>3/22</p>
+      </div>
+      <div className="list">
+        <h4>{title[2]}<span onClick={()=>{setSmile(smile+1)}}>😀</span> {smile}</h4>
+        <p>4/4</p>
+      </div>
+      <div className="list">
+        <h4>{title[3]}<span onClick={()=>{setCrying(crying+1)}}>😢</span> {crying}</h4>
+        <p>11/13</p>
+      </div>
+              {/* click here btn */}
+              <button onClick={ ()=>{ 
+          // ... means 괄호를 벗겨주세요
+          let copy = [...title];
+          copy[0] = 'Im clicked';
+          setTitle(copy)
+      } }> Change Button </button>
+            {/* click here btn */}
+            <button onClick={ ()=>{ 
+          // ... means 괄호를 벗겨주세요
+          let copy = [...title];
+          copy.sort();
+          setTitle(copy)
+      } }> Sort Button </button>
     </div>
+    
   );
 }
 
