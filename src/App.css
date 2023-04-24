@@ -68,3 +68,7 @@ button{
 button:hover{
   background-color: rgb(221, 221, 221);
 }
+.modal{
+  background-color: #f1f1f1;
+  padding: 2em;
+}

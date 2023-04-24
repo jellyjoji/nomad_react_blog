@@ -10,6 +10,7 @@ function App() {
   let [heart, setHeart] = useState(0);
   let [smile, setSmile] = useState(0);
   let [crying, setCrying] = useState(0);
+  let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -18,19 +19,19 @@ function App() {
       </div>
       {/* lists */}
       <div className="list">
-        <h4>{title[0]}<span onClick={()=>{setLiked(liked+1)}}>👍🏻</span> {liked}</h4>
+        <h4 onClick={()=>{setModal(!modal)}}>{title[0]}<span onClick={()=>{setLiked(liked+1)}}>👍🏻</span> {liked}</h4>
         <p>2/17</p>
       </div>
       <div className="list">
-        <h4>{title[1]}<span onClick={()=>{setHeart(heart+1)}}>♥️</span> {heart}</h4>
+        <h4 onClick={()=>{setModal(!modal)}}>{title[1]}<span onClick={()=>{setHeart(heart+1)}}>♥️</span> {heart}</h4>
         <p>3/22</p>
       </div>
       <div className="list">
-        <h4>{title[2]}<span onClick={()=>{setSmile(smile+1)}}>😀</span> {smile}</h4>
+        <h4 onClick={()=>{setModal(!modal)}}>{title[2]}<span onClick={()=>{setSmile(smile+1)}}>😀</span> {smile}</h4>
         <p>4/4</p>
       </div>
       <div className="list">
-        <h4>{title[3]}<span onClick={()=>{setCrying(crying+1)}}>😢</span> {crying}</h4>
+        <h4 onClick={()=>{setModal(!modal)}}>{title[3]}<span onClick={()=>{setCrying(crying+1)}}>😢</span> {crying}</h4>
         <p>11/13</p>
       </div>
               {/* click here btn */}
@@ -47,9 +48,25 @@ function App() {
           copy.sort();
           setTitle(copy)
       } }> Sort Button </button>
+
+      {/* <Modal/> */}
+
+      {
+        modal == true ? <Modal/> : null
+      }
+
     </div>
     
   );
+}
+function Modal(){
+  return(
+    <div className="modal">
+        <h4>title</h4>
+        <p>date</p>
+        <p>detail</p>
+    </div>
+  )
 }
 
 export default App;
